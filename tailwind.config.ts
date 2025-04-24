@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -74,9 +73,21 @@ export default {
 						light: '#F4F5F7',
 						dark: '#253858'
 					},
-					green: '#36B37E',
+					green: {
+						DEFAULT: '#36B37E',
+						light: '#C5E1A5',
+						dark: '#2C9562'
+					},
 					red: '#FF5630',
 					yellow: '#FFAB00'
+				},
+				sage: {
+					50: '#F2FCE2',   // Very light sage green (background)
+					100: '#E6F3D6',  // Light sage green
+					200: '#C5E1A5',  // Soft sage green
+					300: '#36B37E',  // Medium sage green (accent)
+					400: '#2C9562',  // Dark sage green
+					500: '#1A7F4E',  // Deep sage green
 				}
 			},
 			borderRadius: {
