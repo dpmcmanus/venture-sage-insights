@@ -12,6 +12,8 @@ import DealSearch from "@/pages/DealSearch";
 import Pipeline from "@/pages/Pipeline";
 import Admin from "@/pages/Admin";
 import NotFound from "./pages/NotFound";
+import Login from "./pages/auth/Login";
+import Signup from "./pages/auth/Signup";
 
 const queryClient = new QueryClient();
 
@@ -21,17 +23,22 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <MainLayout>
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/companies" element={<Companies />} />
-            <Route path="/companies/:id" element={<CompanyDetail />} />
-            <Route path="/deals" element={<DealSearch />} />
-            <Route path="/pipeline" element={<Pipeline />} />
-            <Route path="/admin" element={<Admin />} />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route
+            path="/"
+            element={<MainLayout />}
+          >
+            <Route index element={<Dashboard />} />
+            <Route path="companies" element={<Companies />} />
+            <Route path="companies/:id" element={<CompanyDetail />} />
+            <Route path="deals" element={<DealSearch />} />
+            <Route path="pipeline" element={<Pipeline />} />
+            <Route path="admin" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
-          </Routes>
-        </MainLayout>
+          </Route>
+        </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
