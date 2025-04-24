@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { MainLayout } from "@/components/main-layout";
 import Dashboard from "@/pages/Dashboard";
+import Companies from "@/pages/Companies";
 import CompanyDetail from "@/pages/CompanyDetail";
 import DealSearch from "@/pages/DealSearch";
 import Pipeline from "@/pages/Pipeline";
@@ -23,6 +24,7 @@ const App = () => (
         <MainLayout>
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/companies" element={<Companies />} />
             <Route path="/companies/:id" element={<CompanyDetail />} />
             <Route path="/deals" element={<DealSearch />} />
             <Route path="/pipeline" element={<Pipeline />} />
