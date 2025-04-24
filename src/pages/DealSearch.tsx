@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { 
+  Card, 
+  CardContent, 
+  CardHeader, 
+  CardTitle, 
+  CardDescription 
+} from "@/components/ui/card";
 import { DealCard } from "@/components/deal-card";
 import { dealPipeline } from "@/services/mock-data";
 import { Search, Filter } from "lucide-react";
@@ -162,67 +168,7 @@ const DealSearch = () => {
         </div>
         
         <div>
-          <h2 className="mb-4 font-semibold">Deal Details</h2>
-          <Card className="sticky top-20">
-            {selectedDeal ? (
-              <CardContent className="p-6">
-                <h3 className="mb-1 text-lg font-medium">{selectedDeal.companyName}</h3>
-                <p className="mb-4 text-sm text-muted-foreground">
-                  {selectedDeal.industry} • {selectedDeal.stage}
-                </p>
-                
-                <div className="mb-4">
-                  <h4 className="mb-1 font-medium">Description</h4>
-                  <p className="text-sm">{selectedDeal.description}</p>
-                </div>
-                
-                <div className="mb-4">
-                  <h4 className="mb-1 font-medium">Ask Amount</h4>
-                  <p className="text-sm">${(selectedDeal.askAmount / 1000000).toFixed(1)}M</p>
-                </div>
-                
-                <div className="mb-4">
-                  <h4 className="mb-1 font-medium">Status</h4>
-                  <Badge 
-                    variant={
-                      selectedDeal.status === "Rejected" ? "destructive" : 
-                      selectedDeal.status === "Closed" ? "outline" : 
-                      "secondary"
-                    }
-                  >
-                    {selectedDeal.status}
-                  </Badge>
-                </div>
-                
-                <div className="mb-4">
-                  <h4 className="mb-1 font-medium">Contact Person</h4>
-                  <p className="text-sm">{selectedDeal.contactPerson}</p>
-                </div>
-                
-                <div className="mb-4">
-                  <h4 className="mb-1 font-medium">Last Contact</h4>
-                  <p className="text-sm">{new Date(selectedDeal.lastContact).toLocaleDateString()}</p>
-                </div>
-                
-                <div>
-                  <h4 className="mb-1 font-medium">Tags</h4>
-                  <div className="flex flex-wrap gap-1">
-                    {selectedDeal.tags.map((tag) => (
-                      <Badge key={tag} variant="outline" className="text-xs bg-vc-gray-light">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            ) : (
-              <CardContent className="p-6 text-center">
-                <p className="text-muted-foreground">Select a deal to view details</p>
-              </CardContent>
-            )}
-          </Card>
-          
-          <Card className="mt-4">
+          <Card>
             <CardHeader>
               <CardTitle>AI Deal Summary</CardTitle>
               <CardDescription>Ask questions about deals</CardDescription>
