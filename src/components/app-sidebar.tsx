@@ -72,9 +72,12 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <Link 
                       to={item.path}
-                      className={cn("flex items-center gap-4", {
-                        "bg-sidebar-accent text-white font-medium": location.pathname === item.path
-                      })}
+                      className={cn(
+                        "flex items-center gap-4 transition-colors hover:bg-vc-sage-light/20 hover:text-vc-sage-dark", 
+                        {
+                          "bg-vc-sage text-white font-medium": location.pathname === item.path
+                        }
+                      )}
                     >
                       <item.icon className="h-5 w-5 text-sidebar-icon" />
                       <span className="text-sidebar-text">{item.title}</span>
@@ -98,4 +101,3 @@ export function AppSidebar() {
     </Sidebar>
   );
 }
-
