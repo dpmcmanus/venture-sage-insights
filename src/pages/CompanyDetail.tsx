@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { toast } from "sonner";
 import html2pdf from "html2pdf.js";
+import { FinancialMetrics } from "@/components/financial-metrics";
 
 const CompanyDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -103,6 +104,9 @@ const CompanyDetail = () => {
       toast.success("Report generated successfully");
     });
   };
+
+  const projectedGrowth = [company.growth, company.growth * 1.1, company.growth * 1.2, company.growth * 1.15, company.growth * 1.25];
+  const burnRate = [2.1, 2.3, 2.0, 2.4, 2.2, 2.5].map(x => x * 1000000);
 
   return (
     <div className="space-y-6">
@@ -205,45 +209,12 @@ const CompanyDetail = () => {
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
-        <Card className="col-span-full md:col-span-2">
-          <CardHeader className="flex flex-row items-center justify-between">
-            <div>
-              <CardTitle>Revenue Analysis</CardTitle>
-              <CardDescription>Historical performance and projections</CardDescription>
-            </div>
-            <Button variant="outline" className="ml-auto" onClick={generatePdf}>
-              <FileChartLine className="mr-2 h-4 w-4" />
-              Generate Report
-            </Button>
-          </CardHeader>
-          <CardContent>
-            <div className="h-[400px] w-full">
-              <MiniChart data={company.revenue.trend} height={350} />
-            </div>
-            <div className="mt-4 grid grid-cols-3 gap-4 border-t pt-4">
-              <div>
-                <p className="text-sm text-muted-foreground">Current Revenue</p>
-                <p className="text-lg font-medium">
-                  ${(company.revenue.current / 1000000).toFixed(1)}M
-                </p>
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">YoY Growth</p>
-                <p className={`text-lg font-medium ${
-                  company.growth > 0 ? "text-vc-green" : "text-vc-red"
-                }`}>
-                  {company.growth > 0 ? "+" : ""}{company.growth}%
-                </p>
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Previous Period</p>
-                <p className="text-lg font-medium">
-                  ${(company.revenue.previous / 1000000).toFixed(1)}M
-                </p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <FinancialMetrics
+          revenue={company.revenue}
+          growth={company.growth}
+          projectedGrowth={projectedGrowth}
+          burnRate={burnRate}
+        />
 
         <Card className="md:col-span-1">
           <CardHeader>
