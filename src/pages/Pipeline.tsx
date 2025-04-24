@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { DealCard } from "@/components/deal-card";
 import { getDealsGroupedByStatus, Deal } from "@/services/mock-data";
@@ -8,11 +7,7 @@ import { Plus } from "lucide-react";
 
 const Pipeline = () => {
   const groupedDeals = getDealsGroupedByStatus();
-  
-  // Pipeline stages in order
   const stages = ["Prospect", "In Progress", "Term Sheet", "Closed"];
-  
-  // Function for handling drag and drop
   const [draggingDeal, setDraggingDeal] = useState<Deal | null>(null);
   
   const handleDragStart = (deal: Deal) => {
@@ -25,9 +20,7 @@ const Pipeline = () => {
   
   const handleDrop = (targetStatus: string) => {
     if (draggingDeal && draggingDeal.status !== targetStatus) {
-      // In a real app, this is where we would update the database
       console.log(`Moving ${draggingDeal.companyName} from ${draggingDeal.status} to ${targetStatus}`);
-      // For now, we'll just clear the dragging state
       setDraggingDeal(null);
     }
   };
@@ -42,21 +35,21 @@ const Pipeline = () => {
         </Button>
       </div>
       
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="space-y-8">
         {stages.map((stage) => {
           const dealsInStage = groupedDeals[stage] || [];
           
           return (
             <div 
               key={stage}
-              className="flex flex-col"
+              className="w-full"
               onDragOver={handleDragOver}
               onDrop={() => handleDrop(stage)}
             >
-              <Card className="flex-1">
+              <Card>
                 <CardHeader className="pb-2">
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-sm font-medium">
+                    <CardTitle className="text-lg font-medium">
                       {stage}
                       <span className="ml-2 rounded-full bg-gray-100 px-2 py-0.5 text-xs">
                         {dealsInStage.length}
@@ -69,23 +62,25 @@ const Pipeline = () => {
                     )}
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-3 overflow-auto p-3">
-                  {dealsInStage.map((deal) => (
-                    <div 
-                      key={deal.id}
-                      draggable
-                      onDragStart={() => handleDragStart(deal)}
-                    >
-                      <DealCard deal={deal} isDraggable />
-                    </div>
-                  ))}
-                  {dealsInStage.length === 0 && (
-                    <div className="flex h-20 items-center justify-center rounded-md border border-dashed">
-                      <p className="text-sm text-muted-foreground">
-                        No deals in this stage
-                      </p>
-                    </div>
-                  )}
+                <CardContent>
+                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {dealsInStage.map((deal) => (
+                      <div 
+                        key={deal.id}
+                        draggable
+                        onDragStart={() => handleDragStart(deal)}
+                      >
+                        <DealCard deal={deal} isDraggable />
+                      </div>
+                    ))}
+                    {dealsInStage.length === 0 && (
+                      <div className="flex h-20 items-center justify-center rounded-md border border-dashed">
+                        <p className="text-sm text-muted-foreground">
+                          No deals in this stage
+                        </p>
+                      </div>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
             </div>
