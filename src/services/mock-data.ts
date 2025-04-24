@@ -1,4 +1,3 @@
-
 export interface Company {
   id: string;
   name: string;
@@ -40,6 +39,7 @@ export interface Deal {
   contactPerson: string;
   description: string;
   tags: string[];
+  interestLevel: 'Low' | 'Medium' | 'High';
 }
 
 // Mock portfolio companies
@@ -198,7 +198,8 @@ export const dealPipeline: Deal[] = [
     lastContact: "2024-04-15",
     contactPerson: "Alex Johnson",
     description: "Next-generation data fabric technology that unifies disparate data sources without ETL.",
-    tags: ["data", "infrastructure", "AI"]
+    tags: ["data", "infrastructure", "AI"],
+    interestLevel: "High"
   },
   {
     id: "d2",
@@ -210,7 +211,8 @@ export const dealPipeline: Deal[] = [
     lastContact: "2024-04-18",
     contactPerson: "Maria Rodriguez",
     description: "Autonomous robots for warehouse logistics with proprietary navigation system.",
-    tags: ["robotics", "logistics", "automation"]
+    tags: ["robotics", "logistics", "automation"],
+    interestLevel: "Medium"
   },
   {
     id: "d3",
@@ -222,7 +224,8 @@ export const dealPipeline: Deal[] = [
     lastContact: "2024-04-22",
     contactPerson: "Tyler Wang",
     description: "AI-powered financial planning platform for small businesses.",
-    tags: ["fintech", "AI", "SaaS"]
+    tags: ["fintech", "AI", "SaaS"],
+    interestLevel: "High"
   },
   {
     id: "d4",
@@ -234,7 +237,8 @@ export const dealPipeline: Deal[] = [
     lastContact: "2024-03-30",
     contactPerson: "Sonia Patel",
     description: "AI-based threat detection for enterprise networks.",
-    tags: ["security", "AI", "enterprise"]
+    tags: ["security", "AI", "enterprise"],
+    interestLevel: "Low"
   },
   {
     id: "d5",
@@ -246,7 +250,8 @@ export const dealPipeline: Deal[] = [
     lastContact: "2024-04-19",
     contactPerson: "Chris Taylor",
     description: "Novel battery technology with 3x energy density of current lithium-ion.",
-    tags: ["cleantech", "hardware", "energy"]
+    tags: ["cleantech", "hardware", "energy"],
+    interestLevel: "High"
   },
   {
     id: "d6",
@@ -258,7 +263,8 @@ export const dealPipeline: Deal[] = [
     lastContact: "2024-03-15",
     contactPerson: "Lisa Montgomery",
     description: "Remote patient monitoring platform with FDA-cleared devices.",
-    tags: ["healthtech", "IoT", "FDA"]
+    tags: ["healthtech", "IoT", "FDA"],
+    interestLevel: "Medium"
   },
   {
     id: "d7",
@@ -270,7 +276,8 @@ export const dealPipeline: Deal[] = [
     lastContact: "2024-04-10",
     contactPerson: "James Liu",
     description: "Orbital debris tracking and avoidance software for satellite operators.",
-    tags: ["space", "software", "saas"]
+    tags: ["space", "software", "saas"],
+    interestLevel: "Medium"
   },
   {
     id: "d8",
@@ -282,7 +289,8 @@ export const dealPipeline: Deal[] = [
     lastContact: "2024-02-28",
     contactPerson: "Emma Johnson",
     description: "Computer vision platform for retail inventory management.",
-    tags: ["retail", "AI", "computer vision"]
+    tags: ["retail", "AI", "computer vision"],
+    interestLevel: "Low"
   }
 ];
 
