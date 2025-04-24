@@ -11,40 +11,43 @@ interface CompanyCardProps {
 export function CompanyCard({ company }: CompanyCardProps) {
   return (
     <Link to={`/companies/${company.id}`}>
-      <Card className="overflow-hidden transition-all hover:shadow-md hover:bg-vc-sage-bg">
-        <CardContent className="p-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 overflow-hidden rounded-md bg-vc-sage-light/20">
-                <img
-                  src={company.logo}
-                  alt={company.name}
-                  className="h-full w-full object-cover"
-                />
+      <Card className="h-full overflow-hidden transition-all hover:shadow-md hover:bg-vc-sage-bg">
+        <CardContent className="p-6">
+          <div className="flex flex-col space-y-6">
+            <div className="flex items-start justify-between">
+              <div className="flex items-center gap-4">
+                <div className="h-16 w-16 overflow-hidden rounded-lg bg-vc-sage-light/20">
+                  <img
+                    src={company.logo}
+                    alt={company.name}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-vc-sage-dark">{company.name}</h3>
+                  <p className="text-base text-muted-foreground">{company.industry}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-medium text-vc-sage-dark">{company.name}</h3>
-                <p className="text-sm text-muted-foreground">{company.industry}</p>
-              </div>
+              <ArrowUpRight className="h-5 w-5 text-vc-sage" />
             </div>
             
-            <div className="flex items-center gap-8">
+            <div className="grid grid-cols-2 gap-6">
               <div>
-                <p className="text-xs text-muted-foreground">Investment</p>
-                <p className="font-medium">
+                <p className="text-sm text-muted-foreground">Investment</p>
+                <p className="text-lg font-medium">
                   ${(company.investmentAmount / 1000000).toFixed(1)}M
                 </p>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground">Valuation</p>
-                <p className="font-medium">
+                <p className="text-sm text-muted-foreground">Valuation</p>
+                <p className="text-lg font-medium">
                   ${(company.valuation / 1000000).toFixed(1)}M
                 </p>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground">Growth YoY</p>
+                <p className="text-sm text-muted-foreground">Growth YoY</p>
                 <p
-                  className={`font-medium ${
+                  className={`text-lg font-medium ${
                     company.growth > 0 ? "text-vc-sage" : "text-vc-red"
                   }`}
                 >
@@ -53,10 +56,9 @@ export function CompanyCard({ company }: CompanyCardProps) {
                 </p>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground">Churn</p>
-                <p className="font-medium">{company.churn}%</p>
+                <p className="text-sm text-muted-foreground">Churn</p>
+                <p className="text-lg font-medium">{company.churn}%</p>
               </div>
-              <ArrowUpRight className="h-4 w-4 text-vc-sage" />
             </div>
           </div>
         </CardContent>
