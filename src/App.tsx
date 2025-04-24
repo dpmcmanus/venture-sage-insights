@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { MainLayout } from "@/components/main-layout";
 import Dashboard from "@/pages/Dashboard";
 import Companies from "@/pages/Companies";
@@ -28,7 +28,11 @@ const App = () => (
           <Route path="/signup" element={<Signup />} />
           <Route
             path="/"
-            element={<MainLayout />}
+            element={
+              <MainLayout>
+                <Outlet />
+              </MainLayout>
+            }
           >
             <Route index element={<Dashboard />} />
             <Route path="companies" element={<Companies />} />
