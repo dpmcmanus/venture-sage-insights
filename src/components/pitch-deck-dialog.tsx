@@ -25,8 +25,8 @@ export function PitchDeckDialog({ isOpen, onClose, companyName }: PitchDeckDialo
           <div>
             <h4 className="mb-2 font-medium">Problem Statement</h4>
             <p className="text-sm text-muted-foreground">
-              {companyName} addresses the critical challenge of [AI-generated summary would go here] in the market,
-              with a focus on efficiency and scalability.
+              {companyName} addresses the critical challenge of cybersecurity in enterprise networks, 
+              focusing on real-time threat detection and automated response mechanisms.
             </p>
           </div>
           
@@ -36,18 +36,19 @@ export function PitchDeckDialog({ isOpen, onClose, companyName }: PitchDeckDialo
               Their proprietary platform leverages cutting-edge technology to deliver:
             </div>
             <div className="flex flex-wrap gap-2">
-              <Badge variant="outline">AI/ML Integration</Badge>
-              <Badge variant="outline">Cloud-Native</Badge>
+              <Badge variant="outline">AI/ML Security</Badge>
+              <Badge variant="outline">Real-time Detection</Badge>
               <Badge variant="outline">Enterprise-Grade</Badge>
-              <Badge variant="outline">API-First</Badge>
+              <Badge variant="outline">Zero Trust</Badge>
             </div>
           </div>
           
           <div>
             <h4 className="mb-2 font-medium">Market Opportunity</h4>
             <p className="text-sm text-muted-foreground">
-              The total addressable market is estimated at $50B, with a serviceable obtainable market of $5B.
-              Current market penetration is less than 2%, indicating significant growth potential.
+              The cybersecurity market is projected to reach $500B by 2025, with enterprise security 
+              solutions commanding a 40% share. {companyName}'s innovative approach positions them to 
+              capture 5% of this rapidly growing market.
             </p>
           </div>
           
