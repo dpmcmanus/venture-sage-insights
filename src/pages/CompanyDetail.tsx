@@ -141,10 +141,39 @@ const CompanyDetail = () => {
         </CardHeader>
         <CardContent>
           <p>{company.description}</p>
-          <Separator className="my-4" />
-          <h3 className="mb-2 text-lg font-medium">AI Insights</h3>
-          <div className="rounded-md bg-gray-50 p-4 text-sm">
-            {company.insights}
+          <Separator className="my-6" />
+          <div>
+            <h3 className="mb-4 text-lg font-medium">AI Executive Summary</h3>
+            <div className="space-y-4">
+              <div className="rounded-md bg-gray-50 p-6">
+                <div className="grid gap-6">
+                  <div>
+                    <h4 className="mb-2 font-medium text-vc-blue">Market Position & Growth</h4>
+                    <p className="text-sm text-muted-foreground">
+                      {company.insights}
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="mb-2 font-medium text-vc-blue">Financial Health</h4>
+                    <p className="text-sm text-muted-foreground">
+                      With a current valuation of ${(company.valuation / 1000000).toFixed(1)}M and 
+                      ${(company.revenue.current / 1000000).toFixed(1)}M in revenue, the company 
+                      demonstrates a {company.growth > 15 ? "strong" : "moderate"} growth trajectory 
+                      at {company.growth}% YoY.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="mb-2 font-medium text-vc-blue">Team & Leadership</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Led by an experienced team of {company.team.length} executives, including 
+                      {company.team.map((member, index) => 
+                        `${index === 0 ? ' ' : index === company.team.length - 1 ? ' and ' : ', '}${member.name} (${member.position})`
+                      )}.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>
