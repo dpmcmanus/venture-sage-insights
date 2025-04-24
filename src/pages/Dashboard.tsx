@@ -1,4 +1,3 @@
-
 import { StatsCard } from "@/components/stats-card";
 import { CompanyCard } from "@/components/company-card";
 import { MiniChart } from "@/components/mini-chart";
@@ -78,7 +77,7 @@ const Dashboard = () => {
 
       <div>
         <h2 className="mb-4 text-xl font-semibold">Portfolio Companies</h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="space-y-4">
           {portfolioCompanies.map((company) => (
             <CompanyCard key={company.id} company={company} />
           ))}
