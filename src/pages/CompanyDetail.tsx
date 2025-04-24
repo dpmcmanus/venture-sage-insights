@@ -1,7 +1,8 @@
+
 import { useParams } from "react-router-dom";
 import { getCompanyById } from "@/services/mock-data";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Award } from "lucide-react";
 import { useState } from "react";
 import { CompanyHeader } from "@/components/company/company-header";
