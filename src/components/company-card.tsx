@@ -11,11 +11,11 @@ interface CompanyCardProps {
 export function CompanyCard({ company }: CompanyCardProps) {
   return (
     <Link to={`/companies/${company.id}`}>
-      <Card className="overflow-hidden transition-all hover:shadow-md">
+      <Card className="overflow-hidden transition-all hover:shadow-md hover:bg-vc-sage-bg">
         <CardContent className="p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 overflow-hidden rounded-md bg-gray-100">
+              <div className="h-10 w-10 overflow-hidden rounded-md bg-vc-sage-light/20">
                 <img
                   src={company.logo}
                   alt={company.name}
@@ -23,7 +23,7 @@ export function CompanyCard({ company }: CompanyCardProps) {
                 />
               </div>
               <div>
-                <h3 className="font-medium text-vc-blue-dark">{company.name}</h3>
+                <h3 className="font-medium text-vc-sage-dark">{company.name}</h3>
                 <p className="text-sm text-muted-foreground">{company.industry}</p>
               </div>
             </div>
@@ -45,7 +45,7 @@ export function CompanyCard({ company }: CompanyCardProps) {
                 <p className="text-xs text-muted-foreground">Growth YoY</p>
                 <p
                   className={`font-medium ${
-                    company.growth > 0 ? "text-vc-green" : "text-vc-red"
+                    company.growth > 0 ? "text-vc-sage" : "text-vc-red"
                   }`}
                 >
                   {company.growth > 0 ? "+" : ""}
@@ -56,7 +56,7 @@ export function CompanyCard({ company }: CompanyCardProps) {
                 <p className="text-xs text-muted-foreground">Churn</p>
                 <p className="font-medium">{company.churn}%</p>
               </div>
-              <ArrowUpRight className="h-4 w-4 text-vc-blue" />
+              <ArrowUpRight className="h-4 w-4 text-vc-sage" />
             </div>
           </div>
         </CardContent>
