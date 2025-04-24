@@ -1,5 +1,4 @@
 import { StatsCard } from "@/components/stats-card";
-import { CompanyCard } from "@/components/company-card";
 import { MiniChart } from "@/components/mini-chart";
 import { portfolioCompanies } from "@/services/mock-data";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -74,15 +73,6 @@ const Dashboard = () => {
           </ul>
         </CardContent>
       </Card>
-
-      <div>
-        <h2 className="mb-4 text-xl font-semibold">Portfolio Companies</h2>
-        <div className="space-y-4">
-          {portfolioCompanies.map((company) => (
-            <CompanyCard key={company.id} company={company} />
-          ))}
-        </div>
-      </div>
 
       <Card>
         <CardHeader>
