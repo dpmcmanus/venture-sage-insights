@@ -63,7 +63,7 @@ const Pipeline = () => {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
                     {dealsInStage.map((deal) => (
                       <div 
                         key={deal.id}
