@@ -1,4 +1,3 @@
-
 import { useParams } from "react-router-dom";
 import { getCompanyById } from "@/services/mock-data";
 import { StatsCard } from "@/components/stats-card";
@@ -6,7 +5,8 @@ import { MiniChart } from "@/components/mini-chart";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BarChart2, Users, DollarSign, FileText, Award, TrendingUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { BarChart2, Users, DollarSign, FileText, Award, TrendingUp, FileChartLine } from "lucide-react";
 
 const CompanyDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -77,14 +77,22 @@ const CompanyDetail = () => {
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
-        <Card className="md:col-span-2">
-          <CardHeader>
-            <CardTitle>Revenue Trend</CardTitle>
-            <CardDescription>Quarterly revenue performance</CardDescription>
+        <Card className="col-span-full md:col-span-2">
+          <CardHeader className="flex flex-row items-center justify-between">
+            <div>
+              <CardTitle>Revenue Analysis</CardTitle>
+              <CardDescription>Historical performance and projections</CardDescription>
+            </div>
+            <Button variant="outline" className="ml-auto" onClick={() => console.log("Generate report")}>
+              <FileChartLine className="mr-2 h-4 w-4" />
+              Generate Report
+            </Button>
           </CardHeader>
-          <CardContent className="p-6">
-            <MiniChart data={company.revenue.trend} height={200} />
-            <div className="mt-4 flex items-center justify-between">
+          <CardContent>
+            <div className="h-[400px] w-full">
+              <MiniChart data={company.revenue.trend} height={350} />
+            </div>
+            <div className="mt-4 grid grid-cols-3 gap-4 border-t pt-4">
               <div>
                 <p className="text-sm text-muted-foreground">Current Revenue</p>
                 <p className="text-lg font-medium">
@@ -100,7 +108,7 @@ const CompanyDetail = () => {
                 </p>
               </div>
               <div>
-                <p className="text-sm text-muted-foreground">Previous</p>
+                <p className="text-sm text-muted-foreground">Previous Period</p>
                 <p className="text-lg font-medium">
                   ${(company.revenue.previous / 1000000).toFixed(1)}M
                 </p>
@@ -109,7 +117,7 @@ const CompanyDetail = () => {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="md:col-span-1">
           <CardHeader>
             <CardTitle>Team</CardTitle>
             <CardDescription>Key leadership</CardDescription>
