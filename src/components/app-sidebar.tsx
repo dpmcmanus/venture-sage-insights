@@ -55,15 +55,15 @@ const navItems = [
 export function AppSidebar() {
   return (
     <Sidebar>
-      <SidebarHeader className="py-6 px-4">
+      <SidebarHeader className="py-6 px-4 bg-sidebar-background">
         <div className="flex items-center">
-          <div className="mr-2 rounded-md bg-vc-blue p-1 text-white">
+          <div className="mr-2 rounded-md bg-sidebar-icon p-1 text-white">
             <ChevronRight size={20} />
           </div>
-          <h1 className="text-lg font-bold text-white">Venture Sage</h1>
+          <h1 className="text-lg font-bold text-sidebar-text">Venture Sage</h1>
         </div>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="bg-sidebar-background">
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -76,8 +76,8 @@ export function AppSidebar() {
                         "bg-sidebar-accent text-white font-medium": location.pathname === item.path
                       })}
                     >
-                      <item.icon className="h-5 w-5" />
-                      <span>{item.title}</span>
+                      <item.icon className="h-5 w-5 text-sidebar-icon" />
+                      <span className="text-sidebar-text">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -86,15 +86,16 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="px-4 py-4">
+      <SidebarFooter className="px-4 py-4 bg-sidebar-background">
         <div className="flex items-center gap-4">
-          <div className="h-8 w-8 rounded-full bg-vc-blue-light"></div>
+          <div className="h-8 w-8 rounded-full bg-sidebar-icon"></div>
           <div className="flex-1">
-            <p className="text-sm font-medium text-white">Alex Morgan</p>
-            <p className="text-xs text-gray-400">Partner</p>
+            <p className="text-sm font-medium text-sidebar-text">Alex Morgan</p>
+            <p className="text-xs text-sidebar-text/70">Partner</p>
           </div>
         </div>
       </SidebarFooter>
     </Sidebar>
   );
 }
+

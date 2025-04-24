@@ -60,7 +60,10 @@ export default {
 					accent: 'hsl(var(--sidebar-accent))',
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
+					ring: 'hsl(var(--sidebar-ring))',
+					background: '#F2FCE2',
+					text: '#465B49',
+					icon: '#6B8E72'
 				},
 				vc: {
 					blue: {
