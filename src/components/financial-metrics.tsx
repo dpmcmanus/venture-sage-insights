@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MiniChart } from "@/components/mini-chart";
@@ -40,7 +39,13 @@ export function FinancialMetrics({
           
           <TabsContent value="revenue">
             <div className="h-[400px] w-full">
-              <MiniChart data={revenue.trend} height={350} />
+              <MiniChart 
+                data={revenue.trend} 
+                height={350}
+                xAxisLabel="Time (Months)"
+                yAxisLabel="Revenue"
+                dataLabel="Revenue"
+              />
             </div>
             <div className="mt-4 grid grid-cols-3 gap-4 border-t pt-4">
               <div>
@@ -68,6 +73,9 @@ export function FinancialMetrics({
                 data={burnRate} 
                 height={350}
                 color="#D946EF"
+                xAxisLabel="Time (Months)"
+                yAxisLabel="Monthly Burn"
+                dataLabel="Burn Rate"
               />
             </div>
             <div className="mt-4 grid grid-cols-2 gap-4 border-t pt-4">
@@ -90,6 +98,9 @@ export function FinancialMetrics({
                 data={projectedGrowth} 
                 height={350}
                 color="#0EA5E9"
+                xAxisLabel="Time (Months)"
+                yAxisLabel="Growth Rate (%)"
+                dataLabel="Growth"
               />
             </div>
             <div className="mt-4 grid grid-cols-2 gap-4 border-t pt-4">
