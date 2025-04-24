@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { DealCard } from "@/components/deal-card";
 import { dealPipeline } from "@/services/mock-data";
 import { Search, Filter } from "lucide-react";
@@ -15,7 +15,6 @@ const DealSearch = () => {
   const [showPitchDeck, setShowPitchDeck] = useState(false);
   const [selectedCompanyName, setSelectedCompanyName] = useState("");
   
-  // Filter deals based on search query
   const filteredDeals = dealPipeline.filter(deal => {
     const query = searchQuery.toLowerCase().trim();
     if (!query) return true;
@@ -28,7 +27,6 @@ const DealSearch = () => {
     );
   });
   
-  // Different deal views
   const activeDeals = filteredDeals.filter(deal => 
     deal.status === "Prospect" || 
     deal.status === "In Progress" || 
