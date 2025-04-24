@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { toast } from "sonner";
 import html2pdf from "html2pdf.js";
+import { saveAs } from 'file-saver';
 
 const CompanyDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -30,8 +31,8 @@ const CompanyDetail = () => {
     );
   }
 
-  const generatePdf = () => {
-    console.log("Generate report");
+  const generateFullReport = () => {
+    console.log("Generate full AI report");
     
     const pdfContent = document.createElement("div");
     pdfContent.innerHTML = `
@@ -93,15 +94,44 @@ const CompanyDetail = () => {
 
     const opt = {
       margin: 10,
-      filename: `${company.name}_Report.pdf`,
+      filename: `${company.name}_Company_Report.pdf`,
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
     html2pdf().set(opt).from(pdfContent).save().then(() => {
-      toast.success("Report generated successfully");
+      toast.success("Company report generated successfully");
     });
+  };
+
+  const generateFinancialModel = () => {
+    const headers = ['Month', 'Revenue', 'Growth', 'Burn Rate', 'Cash Balance'];
+    const csvData = [headers];
+    
+    const monthlyRevenue = company.revenue.current / 12;
+    const monthlyGrowth = company.growth / 12;
+    let currentRevenue = monthlyRevenue;
+    let cashBalance = company.investmentAmount;
+    const monthlyBurn = company.investmentAmount * 0.05;
+
+    for (let i = 1; i <= 12; i++) {
+      currentRevenue = currentRevenue * (1 + monthlyGrowth / 100);
+      cashBalance = cashBalance - monthlyBurn + currentRevenue;
+      
+      csvData.push([
+        `Month ${i}`,
+        currentRevenue.toFixed(2),
+        `${monthlyGrowth.toFixed(2)}%`,
+        monthlyBurn.toFixed(2),
+        cashBalance.toFixed(2)
+      ]);
+    }
+
+    const csvContent = csvData.map(row => row.join(',')).join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+    saveAs(blob, `${company.name}_Financial_Model.csv`);
+    toast.success("Financial model exported successfully");
   };
 
   return (
@@ -123,7 +153,7 @@ const CompanyDetail = () => {
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <Button variant="outline" className="ml-auto" onClick={generatePdf}>
+              <Button variant="outline" className="ml-auto" onClick={generateFullReport}>
                 <Download className="mr-2 h-4 w-4" />
                 Generate Report
               </Button>
@@ -182,9 +212,9 @@ const CompanyDetail = () => {
               <CardTitle>Revenue Analysis</CardTitle>
               <CardDescription>Historical performance and projections</CardDescription>
             </div>
-            <Button variant="outline" className="ml-auto" onClick={generatePdf}>
+            <Button variant="outline" className="ml-auto" onClick={generateFinancialModel}>
               <FileChartLine className="mr-2 h-4 w-4" />
-              Generate Report
+              Export Financial Model
             </Button>
           </CardHeader>
           <CardContent>
