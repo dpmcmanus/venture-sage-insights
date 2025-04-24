@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -9,9 +8,10 @@ interface DealCardProps {
   deal: Deal;
   onClick?: (id: string) => void;
   isDraggable?: boolean;
+  onPitchDeckClick?: (companyName: string) => void;
 }
 
-export function DealCard({ deal, onClick, isDraggable = false }: DealCardProps) {
+export function DealCard({ deal, onClick, isDraggable = false, onPitchDeckClick }: DealCardProps) {
   const handleClick = () => {
     if (onClick) {
       onClick(deal.id);
@@ -28,6 +28,13 @@ export function DealCard({ deal, onClick, isDraggable = false }: DealCardProps) 
         return 'bg-red-100 text-red-800 hover:bg-red-200';
       default:
         return '';
+    }
+  };
+
+  const handlePitchDeckClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (onPitchDeckClick) {
+      onPitchDeckClick(deal.companyName);
     }
   };
 
@@ -75,7 +82,7 @@ export function DealCard({ deal, onClick, isDraggable = false }: DealCardProps) 
           </span>
         </div>
         <div className="flex gap-2 mt-3 border-t pt-3">
-          <Button variant="outline" size="sm" className="flex-1">
+          <Button variant="outline" size="sm" className="flex-1" onClick={handlePitchDeckClick}>
             <FileText className="h-4 w-4 mr-2" />
             Pitch Deck
           </Button>

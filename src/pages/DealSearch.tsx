@@ -1,17 +1,19 @@
-
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { DealCard } from "@/components/deal-card";
 import { dealPipeline } from "@/services/mock-data";
 import { Search, Filter } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { PitchDeckDialog } from "@/components/pitch-deck-dialog";
 
 const DealSearch = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedDealId, setSelectedDealId] = useState<string | null>(null);
+  const [showPitchDeck, setShowPitchDeck] = useState(false);
+  const [selectedCompanyName, setSelectedCompanyName] = useState("");
   
   // Filter deals based on search query
   const filteredDeals = dealPipeline.filter(deal => {
@@ -42,6 +44,11 @@ const DealSearch = () => {
   );
 
   const selectedDeal = filteredDeals.find(deal => deal.id === selectedDealId);
+
+  const handlePitchDeckClick = (companyName: string) => {
+    setSelectedCompanyName(companyName);
+    setShowPitchDeck(true);
+  };
 
   return (
     <div className="space-y-6">
@@ -233,6 +240,12 @@ const DealSearch = () => {
           </Card>
         </div>
       </div>
+
+      <PitchDeckDialog
+        isOpen={showPitchDeck}
+        onClose={() => setShowPitchDeck(false)}
+        companyName={selectedCompanyName}
+      />
     </div>
   );
 };
