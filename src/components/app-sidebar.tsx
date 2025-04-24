@@ -72,11 +72,9 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <Link 
                       to={item.path}
-                      className={({ isActive }) => 
-                        cn("flex items-center gap-4", {
-                          "bg-sidebar-accent text-white font-medium": isActive
-                        })
-                      }
+                      className={cn("flex items-center gap-4", {
+                        "bg-sidebar-accent text-white font-medium": location.pathname === item.path
+                      })}
                     >
                       <item.icon className="h-5 w-5" />
                       <span>{item.title}</span>

@@ -6,7 +6,7 @@ import { MiniChart } from "@/components/mini-chart";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BarChart2, Users, DollarSign, FileText, Award } from "lucide-react";
+import { BarChart2, Users, DollarSign, FileText, Award, TrendingUp } from "lucide-react";
 
 const CompanyDetail = () => {
   const { id } = useParams<{ id: string }>();
