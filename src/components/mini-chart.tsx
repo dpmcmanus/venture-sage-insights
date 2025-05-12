@@ -23,12 +23,18 @@ export function MiniChart({
     label: `M${index + 1}`,
   }));
 
+  // Determine if this is a small chart (like in the dashboard cards) or a larger one
+  const isSmallChart = height <= 50;
+  
   return (
-    <div className="h-10">
+    <div className={`${isSmallChart ? 'h-10' : ''}`}>
       <ResponsiveContainer width="100%" height={height}>
         <AreaChart 
           data={chartData} 
-          margin={{ top: 10, right: 30, left: 40, bottom: 30 }}
+          margin={isSmallChart 
+            ? { top: 0, right: 5, left: 5, bottom: 0 } 
+            : { top: 10, right: 30, left: 40, bottom: 30 }
+          }
         >
           <defs>
             <linearGradient id={`gradient-${color.replace('#', '')}`} x1="0" y1="0" x2="0" y2="1">
@@ -36,35 +42,41 @@ export function MiniChart({
               <stop offset="95%" stopColor={color} stopOpacity={0} />
             </linearGradient>
           </defs>
-          <XAxis 
-            dataKey="label"
-            stroke="#64748b"
-            fontSize={12}
-            tickLine={false}
-            axisLine={true}
-            label={{ 
-              value: xAxisLabel,
-              position: 'bottom',
-              offset: 20,
-              fontSize: 12,
-              fill: "#64748b"
-            }}
-          />
-          <YAxis
-            stroke="#64748b"
-            fontSize={12}
-            tickLine={false}
-            axisLine={true}
-            tickFormatter={(value) => `$${(value / 1000000).toFixed(1)}M`}
-            label={{
-              value: yAxisLabel,
-              angle: -90,
-              position: 'left',
-              offset: 0,
-              fontSize: 12,
-              fill: "#64748b"
-            }}
-          />
+          
+          {!isSmallChart && (
+            <>
+              <XAxis 
+                dataKey="label"
+                stroke="#64748b"
+                fontSize={12}
+                tickLine={false}
+                axisLine={true}
+                label={{ 
+                  value: xAxisLabel,
+                  position: 'bottom',
+                  offset: 20,
+                  fontSize: 12,
+                  fill: "#64748b"
+                }}
+              />
+              <YAxis
+                stroke="#64748b"
+                fontSize={12}
+                tickLine={false}
+                axisLine={true}
+                tickFormatter={(value) => `$${(value / 1000000).toFixed(1)}M`}
+                label={{
+                  value: yAxisLabel,
+                  angle: -90,
+                  position: 'left',
+                  offset: 0,
+                  fontSize: 12,
+                  fill: "#64748b"
+                }}
+              />
+            </>
+          )}
+          
           <Tooltip
             contentStyle={{ 
               background: "white", 
