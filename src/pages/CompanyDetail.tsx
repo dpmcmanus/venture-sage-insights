@@ -214,6 +214,7 @@ const CompanyDetail = () => {
           growth={company.growth}
           projectedGrowth={projectedGrowth}
           burnRate={burnRate}
+          showAxes={true}
         />
 
         <Card className="md:col-span-1">

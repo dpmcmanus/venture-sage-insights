@@ -13,13 +13,15 @@ interface FinancialMetricsProps {
   growth: number;
   projectedGrowth: number[];
   burnRate: number[];
+  showAxes?: boolean;
 }
 
 export function FinancialMetrics({
   revenue,
   growth,
   projectedGrowth,
-  burnRate
+  burnRate,
+  showAxes = false
 }: FinancialMetricsProps) {
   const today = new Date();
   const currentMonth = format(today, 'MMM yyyy');
@@ -40,7 +42,13 @@ export function FinancialMetrics({
           
           <TabsContent value="revenue">
             <div className="h-[400px] w-full">
-              <MiniChart data={revenue.trend} height={350} />
+              <MiniChart 
+                data={revenue.trend} 
+                height={350} 
+                showAxes={showAxes} 
+                xAxisLabel="Quarters" 
+                yAxisLabel="Revenue" 
+              />
             </div>
             <div className="mt-4 grid grid-cols-3 gap-4 border-t pt-4">
               <div>
@@ -68,6 +76,9 @@ export function FinancialMetrics({
                 data={burnRate} 
                 height={350}
                 color="#D946EF"
+                showAxes={showAxes}
+                xAxisLabel="Months"
+                yAxisLabel="Burn Rate"
               />
             </div>
             <div className="mt-4 grid grid-cols-2 gap-4 border-t pt-4">
@@ -90,6 +101,9 @@ export function FinancialMetrics({
                 data={projectedGrowth} 
                 height={350}
                 color="#0EA5E9"
+                showAxes={showAxes}
+                xAxisLabel="Quarters"
+                yAxisLabel="Growth %"
               />
             </div>
             <div className="mt-4 grid grid-cols-2 gap-4 border-t pt-4">
