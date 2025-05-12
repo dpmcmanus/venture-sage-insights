@@ -1,14 +1,34 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Company } from "@/services/mock-data";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Building, LucideIcon, Globe, Factory, Shield, Rocket, Lightbulb, Package } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface CompanyCardProps {
   company: Company;
 }
 
+// Map industry types to appropriate icons
+const getIndustryIcon = (industry: string): LucideIcon => {
+  switch (industry) {
+    case "Artificial Intelligence":
+      return Lightbulb;
+    case "Cloud Infrastructure":
+      return Globe;
+    case "CleanTech":
+      return Factory;
+    case "Biotechnology":
+      return Package;
+    case "Cybersecurity":
+      return Shield;
+    default:
+      return Building;
+  }
+};
+
 export function CompanyCard({ company }: CompanyCardProps) {
+  const IndustryIcon = getIndustryIcon(company.industry);
+  
   return (
     <Link to={`/companies/${company.id}`}>
       <Card className="h-full overflow-hidden transition-all hover:shadow-md hover:bg-vc-sage-bg">
@@ -17,11 +37,7 @@ export function CompanyCard({ company }: CompanyCardProps) {
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-4">
                 <div className="h-16 w-16 overflow-hidden rounded-lg bg-vc-sage-light/20 flex items-center justify-center">
-                  <img
-                    src={company.logo}
-                    alt={company.name}
-                    className="h-full w-full object-cover"
-                  />
+                  <IndustryIcon size={32} className="text-vc-sage" />
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-vc-sage-dark">{company.name}</h3>
