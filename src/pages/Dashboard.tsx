@@ -1,4 +1,3 @@
-
 import { StatsCard } from "@/components/stats-card";
 import { MiniChart } from "@/components/mini-chart";
 import { portfolioCompanies } from "@/services/mock-data";
@@ -45,7 +44,6 @@ const Dashboard = () => {
         <StatsCard
           title="Portfolio Valuation"
           value={`$${(totalValuation / 1000000).toFixed(1)}M`}
-          description="Year over Year"
           trend={15}
           icon={<TrendingUp size={18} />}
         />
@@ -98,13 +96,11 @@ const Dashboard = () => {
                       {company.growth > 0 ? "+" : ""}{company.growth}%
                     </span>
                   </div>
-                  <div className="h-[70px]">
-                    <MiniChart 
-                      data={company.revenue.trend}
-                      color="#0747A6"
-                      height={70}
-                    />
-                  </div>
+                  <MiniChart 
+                    data={company.revenue.trend}
+                    color="#0747A6"
+                    height={50}
+                  />
                   <div className="mt-2 flex items-center justify-between text-xs text-muted-foreground">
                     <span>Rev: ${(company.revenue.current / 1000000).toFixed(1)}M</span>
                     <span className="text-vc-gray">
