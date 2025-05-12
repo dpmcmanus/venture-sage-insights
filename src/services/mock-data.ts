@@ -1,3 +1,4 @@
+
 export interface Company {
   id: string;
   name: string;
@@ -47,7 +48,7 @@ export const portfolioCompanies: Company[] = [
   {
     id: "c1",
     name: "NeuraTech AI",
-    logo: "/placeholder.svg",
+    logo: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=300&h=300",
     industry: "Artificial Intelligence",
     stage: "Series B",
     location: "San Francisco, CA",
@@ -75,7 +76,7 @@ export const portfolioCompanies: Company[] = [
   {
     id: "c2",
     name: "QuantumCloud",
-    logo: "/placeholder.svg",
+    logo: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=300&h=300",
     industry: "Cloud Infrastructure",
     stage: "Series A",
     location: "Boston, MA",
@@ -103,7 +104,7 @@ export const portfolioCompanies: Company[] = [
   {
     id: "c3",
     name: "GreenMile",
-    logo: "/placeholder.svg",
+    logo: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=300&h=300",
     industry: "CleanTech",
     stage: "Series C",
     location: "Austin, TX",
@@ -131,7 +132,7 @@ export const portfolioCompanies: Company[] = [
   {
     id: "c4",
     name: "BioGenome",
-    logo: "/placeholder.svg",
+    logo: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=300&h=300",
     industry: "Biotechnology",
     stage: "Series B",
     location: "Cambridge, MA",
@@ -159,7 +160,7 @@ export const portfolioCompanies: Company[] = [
   {
     id: "c5",
     name: "SecureBlock",
-    logo: "/placeholder.svg",
+    logo: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=300&h=300",
     industry: "Cybersecurity",
     stage: "Series A",
     location: "Atlanta, GA",

@@ -16,7 +16,7 @@ export function CompanyCard({ company }: CompanyCardProps) {
           <div className="flex flex-col space-y-6">
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-4">
-                <div className="h-16 w-16 overflow-hidden rounded-lg bg-vc-sage-light/20">
+                <div className="h-16 w-16 overflow-hidden rounded-lg bg-vc-sage-light/20 flex items-center justify-center">
                   <img
                     src={company.logo}
                     alt={company.name}
